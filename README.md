@@ -1,26 +1,63 @@
-#  Как работать с репозиторием финального задания
+#  Что такое Kittygram?
 
-## Что нужно сделать
+Kittygram - это приложение для размещения информации о своих котах, которой можно поделиться с другими
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+## Как запустить проект?
 
-## Как проверить работу с помощью автотестов
-
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
+Чтобы запустить проект в терминале введите команду:
+```
+docker compose up
 ```
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+## Примеры использование api
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+```
+https://kitty-practicum.hopto.org/api/cats
+```
 
-## Чек-лист для проверки перед отправкой задания
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "name": "Пузан",
+            "color": "orange",
+            "birth_year": 2020,
+            "achievements": [
+                {
+                    "id": 1,
+                    "achievement_name": "Съел деда"
+                }
+            ],
+            "owner": 1,
+            "age": 4,
+            "image": "http://kitty-practicum.hopto.org/media/cats/images/temp.jpeg",
+            "image_url": "/media/cats/images/temp.jpeg"
+        }
+    ]
+}
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+```
+https://kitty-practicum.hopto.org/api/cats/1
+```
+
+{
+    "id": 1,
+    "name": "Пузан",
+    "color": "orange",
+    "birth_year": 2020,
+    "achievements": [
+        {
+            "id": 1,
+            "achievement_name": "Съел деда"
+        }
+    ],
+    "owner": 1,
+    "age": 4,
+    "image": "http://kitty-practicum.hopto.org/media/cats/images/temp.jpeg",
+    "image_url": "/media/cats/images/temp.jpeg"
+}
+
+### Автор vechanka
